@@ -3,12 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const navItems = [
-  { href: "#features", label: "Funciones" },
-  { href: "#pricing", label: "Planes" },
-  { href: "#about", label: "Nosotros" },
-];
-
 export default function Header() {
   return (
     <header className="px-8 py-4">
