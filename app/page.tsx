@@ -1,7 +1,9 @@
+import Header from "@/components/layout/Header";
+
 export default function Home() {
   return (
     <main>
-      <h1>FinTrack</h1>
+      <Header />
     </main>
   );
 }
