@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import Button from "../ui/button";
 
 export default function Header() {
   return (
@@ -16,6 +17,18 @@ export default function Header() {
             priority
           />
         </Link>
+        <Link href="/dashboard" aria-label="Ir al dashboard">
+          Dashboard
+        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/sign-in"
+            className="px-4 py-2 text-sm font-bold text-primary hover:text-gray-900"
+          >
+            Sign In
+          </Link>
+          <Button href="/sign-up">Crear Cuenta</Button>
+        </div>
       </div>
     </header>
   );
