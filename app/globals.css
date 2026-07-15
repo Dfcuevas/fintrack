@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
 :root {
+  --header-shadow: 0px 4px 12px 0px rgba(15, 23, 42, 0.05);
 }
 
 @theme inline {
   --color-primary: #0058be;
+  --color-secondary: #45464d;
+  --color-accent: rgba(198, 198, 205, 0.3);
 }
 
 body {

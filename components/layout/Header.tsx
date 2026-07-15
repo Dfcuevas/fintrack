@@ -6,7 +6,7 @@ import Button from "../ui/button";
 
 export default function Header() {
   return (
-    <header className="px-8 py-4">
+    <header className="px-8 py-4 max-w-7xl mx-auto shadow-(--header-shadow)">
       <div className="mx-auto flex h-16 items-center justify-between">
         <Link href="/" aria-label="Ir al inicio">
           <Image

@@ -1,9 +1,13 @@
 import Header from "@/components/layout/Header";
+import MainSection from "@/components/layout/MainSection";
 
 export default function Home() {
   return (
-    <main className="max-w-7xl mx-auto">
+    <>
       <Header />
-    </main>
+      <main className="max-w-7xl mx-auto bg-accent">
+        <MainSection />
+      </main>
+    </>
   );
 }
