@@ -27,7 +27,9 @@ export default function Header() {
           >
             Sign In
           </Link>
-          <Button href="/sign-up">Crear Cuenta</Button>
+          <Button href="/sign-up" size="sm">
+            Crear Cuenta
+          </Button>
         </div>
       </div>
     </header>

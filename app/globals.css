@@ -8,6 +8,7 @@
   --color-primary: #0058be;
   --color-secondary: #45464d;
   --color-accent: rgba(198, 198, 205, 0.3);
+  --color-stroke: rgba(198, 198, 205, 1);
 }
 
 body {
