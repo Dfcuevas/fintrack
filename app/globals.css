@@ -2,6 +2,8 @@
 
 :root {
   --header-shadow: 0px 4px 12px 0px rgba(15, 23, 42, 0.05);
+  --showcaseCard-shadow-1: 0px 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --showcaseCard-shadow-2: 0px 8px 10px -6px rgba(0, 0, 0, 0.01);
 }
 
 @theme inline {
@@ -9,8 +11,8 @@
   --color-secondary: #45464d;
   --color-accent: rgba(198, 198, 205, 0.3);
   --color-stroke: rgba(198, 198, 205, 1);
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
+  --color-background-showcase: #e5eeff;
+  --color-cards: rgba(229, 238, 255, 1);
+  --color-text-red: rgba(186, 26, 26, 1);
+  --color-text-green: rgba(0, 150, 104, 1);
 }
