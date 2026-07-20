@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import MainSection from "@/components/layout/MainSection";
 import ShowcaseSection from "@/components/layout/ShowcaseSection";
@@ -14,6 +15,7 @@ export default function Home() {
         <ShowcaseSection />
         <SocialProofStats />
       </main>
+      <Footer />
     </>
   );
 }
