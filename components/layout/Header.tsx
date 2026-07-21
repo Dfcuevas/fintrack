@@ -1,12 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import Button from "../ui/button";
+import { Button } from "../ui/Button";
 
-export default function Header() {
+export function Header() {
   return (
-    <header className="px-8 py-4 max-w-7xl mx-auto shadow-(--header-shadow)">
+    <header className="px-12 py-4 max-w-7xl mx-auto shadow-header">
       <div className="mx-auto flex h-16 items-center justify-between">
         <Link href="/" aria-label="Ir al inicio">
           <Image

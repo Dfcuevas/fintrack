@@ -1,4 +1,4 @@
-const SocialProofStats = () => {
+  export function SocialProofStats() {
   return (
     <section className="text-center py-20">
       <h3 className="uppercase font-extrabold text-sm text-secondary tracking-widest">
@@ -25,5 +25,3 @@ const SocialProofStats = () => {
     </section>
   );
 };
-
-export default SocialProofStats;

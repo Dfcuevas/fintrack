@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Button from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
-const MainSection = () => {
+export function HeroSection() {
   return (
     <section className="max-w-7xl py-24">
       <div className="max-w-3xl mx-auto text-center pb-16">
@@ -40,6 +40,4 @@ const MainSection = () => {
       </div>
     </section>
   );
-};
-
-export default MainSection;
+}

@@ -15,7 +15,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "FinTrack",
-  description: "Personal Finance Management",
+  description: "La plataforma definitiva para gestionar tus finanzas personales de manera eficiente y segura.",
+  openGraph: {
+    title: "FinTrack",
+    description: "Gestiona tus finanzas personales con inteligencia y estilo.",
+    type: "website",
+  }
 };
 
 export default function RootLayout({

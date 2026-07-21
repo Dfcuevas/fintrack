@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Footer = () => {
+export function Footer() {
   return (
     <footer className="max-w-7xl mx-auto bg-background-showcase">
       <section className="px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -62,5 +62,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

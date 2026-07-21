@@ -10,7 +10,7 @@ export default function Page() {
           src="/bg-right-signup.png"
           fill
           loading="eager"
-          alt="Login left image"
+          alt="SignUP right image"
         />
       </div>
       <div className="flex items-center justify-center">
