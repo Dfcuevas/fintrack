@@ -1,4 +1,4 @@
-import ValuePropositionItem from "../ui/ValuePropositionItem";
+import { ValuePropositionItem } from "../ui/ValuePropositionItem";
 
 const valuePropositions = [
   {
@@ -21,7 +21,7 @@ const valuePropositions = [
   },
 ];
 
-export default function ValuePropositions() {
+export function ValuePropositions() {
   return (
     <section className="py-20">
       <div className="max-w-296 mx-auto px-4 md:px-8 grid lg:grid-cols-2 xl:grid-cols-3 gap-12">

@@ -6,14 +6,20 @@ interface ValuePropositionItemProps {
   icon: string;
 }
 
-export default function ValuePropositionItem({
+export function ValuePropositionItem({
   title,
   description,
   icon,
 }: ValuePropositionItemProps) {
   return (
     <article className="flex flex-col gap-4">
-      <Image src={icon} alt="Just an Icon" width="56" height="56" />
+      <Image
+        src={icon}
+        alt="Just an Icon"
+        width="56"
+        height="56"
+        sizes="56px"
+      />
       <h1 className="font-bold text-2xl">{title}</h1>
       <p className="text-base text-secondary">{description}</p>
     </article>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 type ButtonPadding = "sm" | "md";
 
-const Button = ({
+export function Button({
   href,
   children,
   size,
@@ -10,7 +10,7 @@ const Button = ({
   size: ButtonPadding;
   href: string;
   children: React.ReactNode;
-}) => {
+}) {
   const sizeClasses = {
     sm: "px-5 py-2.5 font-semibold text-[14px]",
     md: "px-10 py-4 font-bold text-lg",
@@ -24,6 +24,4 @@ const Button = ({
       {children}
     </Link>
   );
-};
-
-export default Button;
+}
