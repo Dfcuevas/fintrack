@@ -34,7 +34,7 @@ export function HeroSection() {
           width={1200}
           height={675}
           alt="Hero image Dashboard"
-          sizes="(max-width: 640px) 100vw, 720px"
+          sizes="(max-width: 1280px) 100vw, 1280px"
           priority
         />
       </div>
