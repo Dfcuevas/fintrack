@@ -7,11 +7,11 @@ import { usePathname } from "next/navigation";
 type NavLinkProps = {
   href: string;
   name: string;
-  icon_white: string;
-  icon_gray: string;
+  iconWhite: string;
+  iconGray: string;
 };
 
-export function NavLink({ href, name, icon_white, icon_gray }: NavLinkProps) {
+export function NavLink({ href, name, iconWhite, iconGray }: NavLinkProps) {
   const pathname = usePathname();
 
   const isActive =
@@ -25,7 +25,7 @@ export function NavLink({ href, name, icon_white, icon_gray }: NavLinkProps) {
     >
       <Link className="flex items-center gap-2 cursor-pointer" href={href}>
         <Image
-          src={isActive ? icon_white : icon_gray}
+          src={isActive ? iconWhite : iconGray}
           alt=""
           width={18}
           height={18}
