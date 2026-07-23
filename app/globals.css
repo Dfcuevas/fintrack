@@ -9,6 +9,7 @@
   --color-cards: rgba(229, 238, 255, 1);
   --color-text-red: rgba(186, 26, 26, 1);
   --color-text-green: rgba(0, 150, 104, 1);
+  --color-softBlue: rgba(239, 244, 255, 1);
 
   --shadow-header: 0px 4px 12px 0px rgba(15, 23, 42, 0.05);
   --shadow-showcase-1: 0px 20px 25px -5px rgba(0, 0, 0, 0.1);
