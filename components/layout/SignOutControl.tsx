@@ -8,7 +8,7 @@ export function SignOutControl() {
       <button type="button" className="flex items-center gap-2 cursor-pointer">
         <Image
           src="/logout-icon.svg"
-          alt="Logout from dashboard icon"
+          alt=""
           width={18}
           height={18}
         />
