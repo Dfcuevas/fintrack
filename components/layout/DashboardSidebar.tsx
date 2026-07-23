@@ -1,24 +1,24 @@
 import { NavLink } from "../ui/NavLink";
 import { SignOutControl } from "./SignOutControl";
 
-const SidebarLink = [
+const sidebarLinks = [
   {
     name: "Dashboard",
     href: "/dashboard",
-    icon_white: "/dashboard-icon-white.svg",
-    icon_gray: "/dashboard-icon-gray.svg",
+    iconWhite: "/dashboard-icon-white.svg",
+    iconGray: "/dashboard-icon-gray.svg",
   },
   {
     name: "Transactions",
     href: "/transactions",
-    icon_white: "/transactions-icon-white.svg",
-    icon_gray: "/transactions-icon-gray.svg",
+    iconWhite: "/transactions-icon-white.svg",
+    iconGray: "/transactions-icon-gray.svg",
   },
   {
     name: "Settings",
     href: "/settings",
-    icon_white: "/settings-icon-white.svg",
-    icon_gray: "/settings-icon-gray.svg",
+    iconWhite: "/settings-icon-white.svg",
+    iconGray: "/settings-icon-gray.svg",
   },
 ];
 
@@ -32,7 +32,7 @@ export const DashboardSidebar = () => {
       {/* Contenedor de los enlaces del sidebar */}
       <div className="flex flex-col justify-between flex-1">
         <ul className="flex-col gap-4 flex">
-          {SidebarLink.map((link) => (
+          {sidebarLinks.map((link) => (
             <NavLink key={link.name} {...link} />
           ))}
         </ul>
