@@ -1,10 +1,12 @@
 import { DashboardSidebar } from "@/components/layout/DashboardSidebar";
+import { getOrCreateUser } from "@/lib/getOrCreateUser";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  await getOrCreateUser();
   return (
     <div className="flex h-screen">
       {/* Columna izquierda - sidebar fijo */}
