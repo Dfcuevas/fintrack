@@ -31,6 +31,21 @@ export async function createExpense(
 
   const user = await getOrCreateUser();
 
+  const category = await db.query.categories.findFirst({
+    where: (categories, { and, eq }) =>
+      and(
+        eq(categories.id, parsed.data.categoryId),
+        eq(categories.userId, user.id),
+        eq(categories.type, parsed.data.type),
+      ),
+  });
+
+  if (!category) {
+    return {
+      errors: { categoryId: ["Categoría inválida para este usuario o tipo"] },
+    };
+  }
+
   await db.insert(expenses).values({
     userId: user.id,
     categoryId: parsed.data.categoryId,
