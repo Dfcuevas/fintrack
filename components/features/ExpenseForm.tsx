@@ -23,7 +23,7 @@ export function ExpenseForm({
     <section className="bg-white rounded-lg p-6 border border-stroke shadow-header">
       <div className="flex flex-col gap-1 pb-6 border-b-accent border-b">
         <h1 className="text-dark-blue font-semibold text-[32px]">
-          Nueva transaccion
+          Nueva transacción
         </h1>
         <p className="text-sm text-secondary">
           Registra tus movimientos financieros con precisión
