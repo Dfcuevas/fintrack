@@ -39,7 +39,11 @@ export function ExpenseForm({
             >
               Tipo de movimiento
             </label>
-            <select name="type" id="type" className="outline-1 outline-stroke rounded py-3 px-4">
+            <select
+              name="type"
+              id="type"
+              className="outline-1 outline-stroke rounded py-3 px-4"
+            >
               <option value="income">Ingreso</option>
               <option value="expense">Gasto</option>
             </select>
@@ -50,7 +54,10 @@ export function ExpenseForm({
 
           {/* Monto */}
           <div className="flex flex-col gap-2.5">
-            <label htmlFor="amount" className="text-sm font-semibold text-secondary">
+            <label
+              htmlFor="amount"
+              className="text-sm font-semibold text-secondary"
+            >
               Monto
             </label>
             <input
@@ -69,7 +76,10 @@ export function ExpenseForm({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Fecha */}
           <div className="flex flex-col gap-2.5">
-            <label htmlFor="date" className="text-sm font-semibold text-secondary">
+            <label
+              htmlFor="date"
+              className="text-sm font-semibold text-secondary"
+            >
               Fecha
             </label>
             <input
@@ -85,7 +95,10 @@ export function ExpenseForm({
           </div>
           {/* Categoria  */}
           <div className="flex flex-col gap-2.5">
-            <label htmlFor="categoryId" className="text-sm font-semibold text-secondary">
+            <label
+              htmlFor="categoryId"
+              className="text-sm font-semibold text-secondary"
+            >
               Categoría
             </label>
             <select
@@ -110,7 +123,10 @@ export function ExpenseForm({
 
         {/* Descripción */}
         <div className="flex flex-col gap-2.5">
-          <label htmlFor="description" className="text-sm font-semibold text-secondary">
+          <label
+            htmlFor="description"
+            className="text-sm font-semibold text-secondary"
+          >
             Descripción
           </label>
           <input
@@ -129,7 +145,10 @@ export function ExpenseForm({
         </div>
         {/* Notas (opcional) */}
         <div className="flex flex-col gap-2.5">
-          <label htmlFor="notes" className="text-sm font-semibold text-secondary">
+          <label
+            htmlFor="notes"
+            className="text-sm font-semibold text-secondary"
+          >
             Notas <span className="text-gray-400 text-xs">(opcional)</span>
           </label>
           <textarea
@@ -150,6 +169,7 @@ export function ExpenseForm({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
           <button
             type="submit"
+            disabled={isPending}
             className="flex gap-2 bg-black text-white py-4 rounded-lg cursor-pointer justify-center items-center"
           >
             <Image src="/save-icon.svg" alt="" width={18} height={18} />
