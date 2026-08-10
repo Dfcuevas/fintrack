@@ -1,10 +1,24 @@
+import ExpensesChart from "@/components/features/ExpensesChart";
+import TransactionsOverview from "@/components/features/TransactionsOVerview";
 import DashboardHeader from "@/components/layout/DashboardHeader";
 import { Button } from "@/components/ui/Button";
 import StatsGrid from "@/components/ui/StatsGrid";
+import { getExpensesByUser } from "@/lib/getExpensesByUser";
+import { getExpenseTotalsByCategory } from "@/lib/getExpenseTotalsByCategory";
+import { getOrCreateUser } from "@/lib/getOrCreateUser";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const user = await getOrCreateUser();
+
+  if (!user) return null;
+
+  const expenses = await getExpensesByUser(user.id);
+  console.log("expenses", expenses);
+
+  const totals = getExpenseTotalsByCategory(expenses)
+
   return (
-    <div>
+    <>
       <DashboardHeader
         title="Dashboard Overview"
         action={
@@ -13,9 +27,13 @@ export default function DashboardPage() {
           </Button>
         }
       />
-      <main className="p-6 space-y-6 bg-softBlue">
+      <section className="p-6 space-y-6 bg-softBlue">
         <StatsGrid />
-      </main>
-    </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <ExpensesChart  totals={totals} />
+          <TransactionsOverview />
+        </div>
+      </section>
+    </>
   );
 }
