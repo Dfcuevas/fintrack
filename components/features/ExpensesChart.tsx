@@ -7,8 +7,8 @@ import {
   PieChart,
   PieLabelRenderProps,
   PieSectorShapeProps,
+  ResponsiveContainer,
   Sector,
-  Text,
   useActiveTooltipDataPoints,
   useIsTooltipActive,
 } from "recharts";
