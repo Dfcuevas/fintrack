@@ -18,7 +18,6 @@ export default async function DashboardPage() {
     (transaction) => transaction.type === "expense",
   );
 
-
   const totals = getExpenseTotalsByCategory(expenses);
 
   return (
@@ -35,7 +34,7 @@ export default async function DashboardPage() {
         <StatsGrid />
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           <ExpensesChart totals={totals} />
-          <TransactionsOverview expenses={expenses} />
+          <TransactionsOverview transactions={allTransactions} />
         </div>
       </section>
     </>
