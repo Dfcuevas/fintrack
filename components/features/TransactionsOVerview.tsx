@@ -7,7 +7,7 @@ export default function TransactionsOverview({
 }: {
   expenses: ExpensesWithCategory;
 }) {
-  console.log(expenses);
+  const recentExpenses = expenses.slice(0, 5);
   return (
     <section className="col-span-1 rounded-xl bg-white p-6">
       <div className="flex justify-between items-center border-b border-stroke pb-4">
@@ -15,7 +15,7 @@ export default function TransactionsOverview({
         <Link href="/transactions">Ver todas</Link>
       </div>
       <div>
-        {expenses.map((tx) => (
+        {recentExpenses.map((tx) => (
           <TransactionCard key={tx.id} tx={tx} />
         ))}
       </div>
