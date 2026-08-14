@@ -18,9 +18,6 @@ export default async function DashboardPage() {
     (transaction) => transaction.type === "expense",
   );
 
-  const income = allTransactions.filter(
-    (transaction) => transaction.type === "income",
-  );
 
   const totals = getExpenseTotalsByCategory(expenses);
 
