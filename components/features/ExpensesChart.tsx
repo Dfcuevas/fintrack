@@ -79,25 +79,20 @@ const ExpensesChart = ({ totals }: { totals: CategoryTotal[] }) => {
         <h3 className="text-center text-lg xl:text-2xl font-semibold mt-6">
           Gastos Por Categoría
         </h3>
-        <PieChart
-          style={{
-            width: "100%",
-            maxWidth: "100%",
-            aspectRatio: 1,
-          }}
-          responsive
-        >
-          <Pie
-            data={totals}
-            labelLine={false}
-            label={renderCustomizedLabel}
-            fill="#8884d8"
-            dataKey="total"
-            isAnimationActive={true}
-            shape={MyCustomPie}
-          />
-          <RechartsDevtools />
-        </PieChart>
+        <ResponsiveContainer width="100%" aspect={1}>
+          <PieChart>
+            <Pie
+              data={totals}
+              labelLine={false}
+              label={renderCustomizedLabel}
+              fill="#8884d8"
+              dataKey="total"
+              isAnimationActive
+              shape={MyCustomPie}
+            />
+            {process.env.NODE_ENV === "development" && <RechartsDevtools />}
+          </PieChart>
+        </ResponsiveContainer>
       </div>
       <div className="p-6">
         <ul>
