@@ -12,10 +12,17 @@ export default async function DashboardPage() {
 
   if (!user) return null;
 
-  const expenses = await getExpensesByUser(user.id);
-  console.log("expenses", expenses);
+  const allTransactions = await getExpensesByUser(user.id);
 
-  const totals = getExpenseTotalsByCategory(expenses)
+  const expenses = allTransactions.filter(
+    (transaction) => transaction.type === "expense",
+  );
+
+  const income = allTransactions.filter(
+    (transaction) => transaction.type === "income",
+  );
+
+  const totals = getExpenseTotalsByCategory(expenses);
 
   return (
     <>
@@ -29,9 +36,9 @@ export default async function DashboardPage() {
       />
       <section className="p-6 space-y-6 bg-softBlue">
         <StatsGrid />
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <ExpensesChart  totals={totals} />
-          <TransactionsOverview />
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <ExpensesChart totals={totals} />
+          <TransactionsOverview expenses={expenses} />
         </div>
       </section>
     </>
