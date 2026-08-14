@@ -3,22 +3,20 @@ import Link from "next/link";
 import TransactionCard from "../ui/TransactionCard";
 
 export default function TransactionsOverview({
-  expenses,
+  transactions,
 }: {
-  expenses: ExpensesWithCategory;
+  transactions: ExpensesWithCategory
 }) {
-  const recentExpenses = expenses.slice(0, 5);
+  const recentTransactions = transactions.slice(0, 5);
   return (
-    <section className="col-span-1 rounded-xl bg-white p-6">
-      <div className="flex justify-between items-center border-b border-stroke pb-4">
-        <h2 className=" text-2xl font-bold mb-4">Transacciones</h2>
+    <section className="col-span-1 rounded-xl bg-white p-6 max-w">
+      <div className="flex justify-start gap-6 lg:justify-between items-center border-b border-stroke pb-4">
+        <h2 className=" text-2xl font-bold">Transacciones</h2>
         <Link href="/transactions">Ver todas</Link>
       </div>
-      <div>
-        {recentExpenses.map((tx) => (
-          <TransactionCard key={tx.id} tx={tx} />
-        ))}
-      </div>
+      {recentTransactions.map((tx) => (
+        <TransactionCard key={tx.id} tx={tx} />
+      ))}
     </section>
   );
 }
