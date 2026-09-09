@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRef } from "react";
 import { Button } from "../ui/Button";
 import { SearchInput } from "../ui/SearchInput";
 
@@ -14,38 +15,65 @@ const PAGE_SIZE = 5;
 const TransactionsTable = ({
   categories,
   transactions,
+  currentPage,
+  totalCount,
+  query,
+  selectedCategory,
 }: {
   categories: Category[];
   transactions: ExpensesWithCategory;
+  currentPage: number;
+  totalCount: number;
+  query: string;
+  selectedCategory: string;
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("Todas");
-  const [query, setQuery] = useState<string>("");
-
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const searchRef = useRef<HTMLInputElement>(null);
-  const [page, setPage] = useState<number>(1);
 
-  const filtered = useMemo(() => {
-    return transactions.filter((t) => {
-      const matchesQuery =
-        query.trim() === "" ||
-        t.description.toLowerCase().includes(query.toLowerCase()) ||
-        t.category.name.toLowerCase().includes(query.toLowerCase()) ||
-        (t.notes ?? "").toLowerCase().includes(query.toLowerCase());
+  const updateParams = (updates: {
+    page?: number;
+    query?: string;
+    category?: string;
+  }) => {
+    const params = new URLSearchParams(searchParams.toString());
 
-      const matchesCategory =
-        selectedCategory === "Todas" || t.category.name === selectedCategory;
+    if (updates.page !== undefined) {
+      if (updates.page <= 1) {
+        params.delete("page");
+      } else {
+        params.set("page", String(updates.page));
+      }
+    }
 
-      return matchesQuery && matchesCategory;
-    });
-  }, [transactions, query, selectedCategory]);
+    if (updates.query !== undefined) {
+      if (updates.query.trim() === "") {
+        params.delete("query");
+      } else {
+        params.set("query", updates.query);
+      }
+    }
+
+    if (updates.category !== undefined) {
+      if (updates.category === "Todas") {
+        params.delete("category");
+      } else {
+        params.set("category", updates.category);
+      }
+    }
+
+    const queryString = params.toString();
+    router.push(queryString ? `${pathname}?${queryString}` : pathname);
+  };
 
   const handleClear = () => {
-    setQuery("");
+    updateParams({ query: "", page: 1 });
     searchRef.current?.focus(); // forwardRef en accion: enfoca el input al limpiar
   };
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const pageItems = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
+  const pageItems = transactions;
 
   return (
     <div className="">
@@ -64,8 +92,7 @@ const TransactionsTable = ({
           ref={searchRef}
           value={query}
           onChange={(e) => {
-            setQuery(e.target.value);
-            setPage(1);
+            updateParams({ query: e.target.value, page: 1 });
           }}
           onClear={handleClear}
           placeholder="Buscar transacción..."
@@ -74,8 +101,7 @@ const TransactionsTable = ({
           <select
             value={selectedCategory}
             onChange={(e) => {
-              setSelectedCategory(e.target.value);
-              setPage(1);
+              updateParams({ category: e.target.value, page: 1 });
             }}
             className="appearance-none bg-white py-2 pl-4 rounded-lg pr-10 border border-accent focus:ring-2 focus:ring-primary focus:outline-none w-full"
           >
@@ -156,12 +182,12 @@ const TransactionsTable = ({
       {/*Paginación*/}
       <div className="flex flex-col gap-2 border-t border-gray-100 px-6 py-4 text-sm sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-secondary">
-          Mostrando {pageItems.length} de {transactions.length} transacciones.
+          Mostrando {pageItems.length} de {totalCount} transacciones.
         </p>
         <div className="flex items-center gap-2">
           <button
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-            disabled={page === 1}
+            onClick={() => updateParams({ page: Math.max(1, currentPage - 1) })}
+            disabled={currentPage === 1}
             className="flex items-center gap-1 rounded-md px-2 py-1.5 text-primary font-medium hover:bg-gray-50 disabled:opacity-40 cursor-pointer"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -171,8 +197,8 @@ const TransactionsTable = ({
             (pageNumber) => (
               <button
                 key={pageNumber}
-                onClick={() => setPage(pageNumber)}
-                className={`cursor-pointer h-8 w-8 rounded-md text-sm font-medium ${page === pageNumber ? "bg-primary text-white" : "text-gray-500 hover:bg-gray-50"}`}
+                onClick={() => updateParams({ page: pageNumber })}
+                className={`cursor-pointer h-8 w-8 rounded-md text-sm font-medium ${currentPage === pageNumber ? "bg-primary text-white" : "text-gray-500 hover:bg-gray-50"}`}
               >
                 {pageNumber}
               </button>
@@ -180,8 +206,10 @@ const TransactionsTable = ({
           )}
           {totalPages > 3 && <span className="px-1 text-gray-400">...</span>}
           <button
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-            disabled={page === totalPages}
+            onClick={() =>
+              updateParams({ page: Math.min(totalPages, currentPage + 1) })
+            }
+            disabled={currentPage === totalPages}
             className="flex items-center gap-1 rounded-md px-2 py-1.5 text-primary hover:bg-gray-50 disabled:opacity-40 cursor-pointer"
           >
             Siguiente
