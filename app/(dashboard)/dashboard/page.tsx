@@ -13,12 +13,23 @@ export default async function DashboardPage() {
   if (!user) return null;
 
   const allTransactions = await getExpensesByUser(user.id);
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentYear = now.getFullYear();
 
-  const incomes = allTransactions.filter(
+  const currentMonthTransactions = allTransactions.filter((transaction) => {
+    const transactionDate = new Date(transaction.date);
+    return (
+      transactionDate.getMonth() === currentMonth &&
+      transactionDate.getFullYear() === currentYear
+    );
+  });
+
+  const incomes = currentMonthTransactions.filter(
     (transaction) => transaction.type === "income",
   );
 
-  const expenses = allTransactions.filter(
+  const expenses = currentMonthTransactions.filter(
     (transaction) => transaction.type === "expense",
   );
 
@@ -28,6 +39,10 @@ export default async function DashboardPage() {
     (acc, current) => acc + Number(current.amount),
     0,
   );
+  const totalBalance = allTransactions.reduce((acc, transaction) => {
+    const amount = Number(transaction.amount);
+    return transaction.type === "income" ? acc + amount : acc - amount;
+  }, 0);
 
   return (
     <>
@@ -40,7 +55,11 @@ export default async function DashboardPage() {
         }
       />
       <section className="p-6 space-y-6 bg-softBlue">
-        <StatsGrid expenses={totalExpenses} incomes={totalIncomes} />
+        <StatsGrid
+          balance={totalBalance}
+          expenses={totalExpenses}
+          incomes={totalIncomes}
+        />
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           <ExpensesChart totals={totals} />
           <TransactionsOverview transactions={allTransactions} />
