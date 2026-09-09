@@ -12,7 +12,6 @@ const TransactionsPage = async () => {
     getExpensesByUser(user.id),
   ]);
 
-  if (!user) return null;
 
   return (
     <>
