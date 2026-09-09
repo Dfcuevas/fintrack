@@ -8,9 +8,6 @@ interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
   ({ onClear, value, ...props }, ref) => {
-
-    console.log(value)
-
     return (
       <div className="relative flex ">
         <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
