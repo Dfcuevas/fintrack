@@ -15,7 +15,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
           ref={ref}
           type="text"
           value={value}
-          className="py-2 pl-10 bg-white rounded-lg border-accent border text-sm w-72 focus:outline-none focus:ring-2 focus:ring-primary"
+          className="py-2 pl-10 pr-10 bg-white rounded-lg border-accent border text-sm w-72 focus:outline-none focus:ring-2 focus:ring-primary"
           {...props}
         />
         {value && onClear && (
