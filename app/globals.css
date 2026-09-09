@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  
   --color-primary: #0058be;
   --color-secondary: #45464d;
   --color-accent: rgba(198, 198, 205, 0.3);

@@ -14,12 +14,12 @@ const sidebarLinks = [
     iconWhite: "/transactions-icon-white.svg",
     iconGray: "/transactions-icon-gray.svg",
   },
-  {
-    name: "Settings",
-    href: "/settings",
-    iconWhite: "/settings-icon-white.svg",
-    iconGray: "/settings-icon-gray.svg",
-  },
+  // {
+  //   name: "Settings",
+  //   href: "/settings",
+  //   iconWhite: "/settings-icon-white.svg",
+  //   iconGray: "/settings-icon-gray.svg",
+  // },
 ];
 
 export const DashboardSidebar = () => {
