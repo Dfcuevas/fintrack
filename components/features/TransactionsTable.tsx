@@ -63,14 +63,20 @@ const TransactionsTable = ({
         <SearchInput
           ref={searchRef}
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setPage(1);
+          }}
           onClear={handleClear}
           placeholder="Buscar transacción..."
         />
         <div className="relative flex items-center gap-2 text-secondary">
           <select
             value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            onChange={(e) => {
+              setSelectedCategory(e.target.value);
+              setPage(1);
+            }}
             className="appearance-none bg-white py-2 pl-4 rounded-lg pr-10 border border-accent focus:ring-2 focus:ring-primary focus:outline-none w-full"
           >
             <option value="Todas">Categoría</option>
