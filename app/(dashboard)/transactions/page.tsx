@@ -23,12 +23,7 @@ const TransactionsPage = async ({ searchParams }: TransactionsPageProps) => {
   const user = await getOrCreateUser();
   const allCategories = await getAllCategories(user.id);
 
-  const categoryIds =
-    selectedCategory === "Todas"
-      ? []
-      : allCategories
-          .filter((category) => category.name === selectedCategory)
-          .map((category) => category.id);
+  const categoryIds = selectedCategory === "Todas" ? [] : [selectedCategory];
 
   const { transactions, totalCount } = await getExpensesByUserPage(user.id, {
     page: currentPage,
